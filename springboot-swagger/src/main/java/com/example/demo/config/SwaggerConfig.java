@@ -14,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2 // TODO:开启Swagger2
 public class SwaggerConfig {
+
 	// http://localhost:8080/v2/api-docs
 
 	// TODO:配置Swagger的Bean实例
