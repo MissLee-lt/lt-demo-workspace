@@ -46,26 +46,26 @@ public class MongoDBTest2 implements StreamRequestHandler, FunctionInitializer {
 		credentials.add(mongoCredential);
 
 
-		//通过连接认证获取MongoDB连接
+		//TODO：通过连接认证获取MongoDB连接
 		MongoClient mongoClient = new MongoClient(addr, credentials);
 
-		//连接到数据库
+		//TODO：连接到数据库
 		MongoDatabase mongoDatabase = mongoClient.getDatabase("test");
 
-		//获取集合
+		//TODO：获取集合
 		MongoCollection<Document> collection = mongoDatabase.getCollection("user");
 
 
-		//创建文档
+		//TODO：创建文档
 		Document document = new Document("name","zhangsan")
 		.append("sex", "man")
 		.append("age", 18);
 
-	    //插入一个文档
+	    //TODO：插入一个文档
 	    collection.insertOne(document);
 
 
-	    //要插入的数据
+	    //TODO：要插入的数据
 	    List<Document> list = new ArrayList<>();
 	    for(int i = 1; i <= 3; i++) {
 	        Document documentItem = new Document("name", "zhangsan" + i)
@@ -74,10 +74,10 @@ public class MongoDBTest2 implements StreamRequestHandler, FunctionInitializer {
 	        list.add(documentItem);
 	    }
 
-	    //插入多个文档
+	    //TODO：插入多个文档
 	    collection.insertMany(list);
 
-	  //查找集合中的所有文档
+	  //TODO：查找集合中的所有文档
 	    FindIterable findIterable = collection.find();
 	    MongoCursor cursor = findIterable.iterator();
 	    while (cursor.hasNext()) {
