@@ -67,9 +67,5 @@ public class HttpTest implements StreamRequestHandler, FunctionInitializer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
-
-
 }
