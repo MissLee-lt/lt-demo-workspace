@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel("用户实体类")
+@ApiModel("userEntityClass")
 public class User {
 
 	@ApiModelProperty("用户名")
