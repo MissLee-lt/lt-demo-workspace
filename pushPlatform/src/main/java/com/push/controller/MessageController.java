@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.push.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.config.MongoDBJDBC;
 import com.mongodb.client.MongoCollection;
+import com.push.config.MongoDBJDBC;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

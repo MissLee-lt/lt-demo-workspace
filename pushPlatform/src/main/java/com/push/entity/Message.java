@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.push.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

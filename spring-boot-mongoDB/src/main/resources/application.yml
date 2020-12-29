@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/test
-  application:
-    name: mongoweb
+#  application:
+#    name: mongoweb
 server:
   port: 8888
