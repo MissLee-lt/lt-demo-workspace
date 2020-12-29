@@ -1,14 +1,15 @@
 package com.example.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.Document;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.Message;
+import com.example.config.MongoDBJDBC;
+import com.mongodb.client.MongoCollection;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -33,17 +34,22 @@ public class MessageController {
 		@ApiResponse(code = 403, message = "ACL禁止访问资源"),
 		@ApiResponse(code = 404, message = "请求路径没有或者页面跳转路径不对")
 	})
-	public List<Message> getUserMessageList(@PathVariable String guid){
-		List<Message> messageList = new ArrayList<Message>();
-		for(int i = 0; i < 5; i++) {
-			Message message = new Message();
-			message.setGuid("guid");
-			message.setReadStatus(0);
-			message.setCategory("P81");
-			message.setTitle("【疏忽提醒】");
-			message.setMessage("您的车辆有疏忽提醒" + i);
-			messageList.add(message);
-		}
-		return messageList;
+	public List getUserMessageList(@PathVariable String guid){
+//		List<Message> messageList = new ArrayList<Message>();
+//		for(int i = 0; i < 5; i++) {
+//			Message message = new Message();
+//			message.setGuid("guid");
+//			message.setReadStatus(0);
+//			message.setCategory("P81");
+//			message.setTitle("【疏忽提醒】");
+//			message.setMessage("您的车辆有疏忽提醒" + i);
+//			messageList.add(message);
+//		}
+//		return messageList;
+
+		MongoDBJDBC mongoDb = new MongoDBJDBC();
+		MongoCollection<Document> collection = mongoDb.connectMongoDB();
+		List<String> list = mongoDb.query(collection,"guid");
+		return list;
 	}
 }
