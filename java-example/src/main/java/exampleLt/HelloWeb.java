@@ -13,9 +13,9 @@ import com.aliyun.fc.runtime.FunctionInitializer;
 import com.aliyun.fc.runtime.HttpRequestHandler;
 
 public class HelloWeb implements FunctionInitializer, HttpRequestHandler {
-	
+
 	private FcAppLoader fcAppLoader = new FcAppLoader();
-	
+
 	private String ossEndPoint = "YourOSSEndPoint";
 	private String bucket = "YourOSSBucket";
 	private String key = "YourWarName";
@@ -26,15 +26,15 @@ public class HelloWeb implements FunctionInitializer, HttpRequestHandler {
 		// TODO Auto-generated method stub
 		FunctionComputeLogger fcLogger = context.getLogger();
 		fcAppLoader.setFCContext(context);
-		
+
 		//Load code from OSS
 		fcAppLoader.loadCodeFromOSS(ossEndPoint, bucket, key);
-		
+
 		//Init webapp from code
 		fcAppLoader.initApp(userContextPath, HelloWeb.class.getClassLoader());
 
 	}
-	
+
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response, Context context)
 			throws IOException, ServletException {

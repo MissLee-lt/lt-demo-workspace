@@ -49,7 +49,8 @@ public class MessageController {
 
 		MongoDBJDBC mongoDb = new MongoDBJDBC();
 		MongoCollection<Document> collection = mongoDb.connectMongoDB();
-		List<String> list = mongoDb.query(collection,"guid");
+		List<String> list = mongoDb.query(collection,guid);
 		return list;
 	}
+
 }
