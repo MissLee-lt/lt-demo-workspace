@@ -9,7 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.pushPlatform.dao.MessageDao;
-import com.pushPlatform.entity.Message;
+import com.pushPlatform.entity.Message1;
+import com.pushPlatform.entity.Push_message;
 
 /**
  * MessageDao接口实现
@@ -24,22 +25,29 @@ public class MessageDaoImpl implements MessageDao {
 	 */
 	@Autowired
 	private MongoTemplate mongoTemplate;
-
-	/**
-	 * notes：查询全部Message列表
-	 */
-	@Override
-	public List<Message> getMessageList() {
-		return mongoTemplate.findAll(Message.class);
-	}
+	private Query query;
 
 	/**
 	 * notes：根据guid查询Message列表
 	 */
 	@Override
-	public List<Message> getUserMessageList(String guid) {
-		Query query = new Query(Criteria.where("guid").is(guid));
-		return mongoTemplate.find(query, Message.class);
+	public List<Message1> getUserMessageList(String guid) {
+		Query query = new Query(Criteria.where("guid").is(guid)).limit(20);
+		return mongoTemplate.find(query, Message1.class);
+	}
+
+	/**
+	 * notes：根据guid查询Push_message列表
+	 */
+	@Override
+	public List<Push_message> getUserPushMessageList(String guid) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("guid").is(guid));
+		query.fields().include("transactionId")
+			.include("guid")
+			.include("readStatus")
+			.include("message");
+		return mongoTemplate.find(query, Push_message.class);
 	}
 
 }

@@ -30,8 +30,8 @@ public class SwaggerConfig {
 	// notes：配置API的基本信息（会在http://localhost:8888/swagger-ui.html页面显示）
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("获取消息函数计算")
-				.description("PUSH通知对应接口：<br/>  1.获取消息I/F【GetMessageList】<br/> ")
+				.title("获取消息列表")
+				.description("PUSH通知对应接口：<br/>  1.获取消息列表I/F【GetMessageList】<br/> ")
 				.termsOfServiceUrl("")
 				.version("1.0.0")
 				.build();

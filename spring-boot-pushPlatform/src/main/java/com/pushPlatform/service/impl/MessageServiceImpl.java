@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pushPlatform.dao.MessageDao;
-import com.pushPlatform.entity.Message;
+import com.pushPlatform.entity.Message1;
+import com.pushPlatform.entity.Push_message;
 import com.pushPlatform.service.MessageService;
 
 @Service("messageService")
@@ -16,13 +17,13 @@ public class MessageServiceImpl implements MessageService {
 	private MessageDao messageDao;
 
 	@Override
-	public List<Message> getMessageList() {
-		return messageDao.getMessageList();
+	public List<Message1> getUserMessageList(String guid) {
+		return messageDao.getUserMessageList(guid);
 	}
 
 	@Override
-	public List<Message> getUserMessageList(String guid) {
-		return messageDao.getUserMessageList(guid);
+	public List<Push_message> getUserPushMessageList(String guid) {
+		return messageDao.getUserPushMessageList(guid);
 	}
 
 }
